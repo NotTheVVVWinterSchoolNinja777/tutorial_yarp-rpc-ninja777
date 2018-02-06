@@ -27,8 +27,14 @@ int main(int argc, char *argv[]) {
         else {
             Bottle cmd;
             //prepare query
+            cmd.addInt(ct);
 
             //write query and receive reply
+            Bottle response;
+            port.write(cmd, response);
+            yInfo()<<"Got response :" + response.toString();
+
+            ++ct;
         }
         Time::delay(1);
     }

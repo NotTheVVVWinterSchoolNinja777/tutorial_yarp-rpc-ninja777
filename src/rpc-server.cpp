@@ -20,10 +20,17 @@ int main(int argc, char *argv[]) {
         Bottle response;
 
         // read from port
+        if(port.read(cmd)){
 
         // prepare reply
+        response.addString("Recieved message :" + cmd.toString());
 
         // write reply
+        port.reply(response);
+        }
+        else {
+            yError()<<"Error reading the request";
+        }
      }
 }
 
